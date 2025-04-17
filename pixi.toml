@@ -1,0 +1,15 @@
+[project]
+authors = ["Wes B <wbrooks@ucdavis.edu>"]
+channels = ["conda-forge"]
+description = "Add a short description here"
+name = "2025_startup_royer_primate_health"
+platforms = ["osx-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+r = ">=4.4,<4.5"
+r-readxl = ">=1.4.5,<2"
+r-dplyr = ">=1.1.4,<2"
+r-ggplot2 = ">=3.5.2,<4"

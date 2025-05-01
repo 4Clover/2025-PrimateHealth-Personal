@@ -1,4 +1,6 @@
 # Add Project-specific Files HERE
+static/*
+!static/**.svg
 
 
 # DataLab Project Directory Structure

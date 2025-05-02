@@ -1,0 +1,70 @@
+﻿[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# Core project metadata (PEP 621)
+name = "2025_startup_royer_primate_health"
+version = "0.1.0" # Start with 0.1.0, increment as you release changes (SemVer recommended)
+description = "Analysis of primate health data."
+readme = "README.md"
+requires-python = ">=3.8" # Minimum Python version compatibility
+license = { file = "LICENSE" } # <<< TODO: Choose a license (e.g., MIT, Apache-2.0) or use { file = "LICENSE" } if you have a LICENSE file
+
+# Core dependencies needed for the project to run
+dependencies = [
+    "pandas",         # For data manipulation and loading
+    "numpy",          # For numerical operations
+    "scikit-learn",   # For PCA implementation and other ML tools
+    "matplotlib",     # For plotting
+    "seaborn",        # For enhanced plotting
+]
+
+# Optional metadata - highly recommended for sharing/publishing
+authors = [
+  { name = "Dillon Mannion", email = "dillonmannion16@gmail.com" },
+]
+
+maintainers = [
+  { name = "Dillon Mannion", email = "dillonmannion16@gmail.com" }, # <<< TODO: Replace with maintainer details (can be same as author)
+]
+
+keywords = ["pca", "cca", "dimensionality reduction", "data analysis", "scikit-learn", "python"]
+
+classifiers = [ # Standard classifiers from PyPI (https://pypi.org/classifiers/)
+    "Development Status :: 3 - Alpha", # Or "4 - Beta", "5 - Production/Stable"
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License", # <<< TODO: Match the license chosen above
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Scientific/Engineering :: Visualization",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/datalab-dev/2025_startup_royer_primate_health/tree/dillon_mannion_exploration" # <<< TODO: Replace with actual URL
+"Repository" = "https://github.com/datalab-dev/2025_startup_royer_primate_health/tree/dillon_mannion_exploration" # <<< TODO: Replace with actual URL
+"Bug Tracker" = "https://github.com/datalab-dev/2025_startup_royer_primate_health/issues" # <<< TODO: Replace with actual URL
+
+# Example of optional dependencies (e.g., for development or specific features)
+# [project.optional-dependencies]
+# dev = [
+#   "pytest",
+#   "ruff",
+#   "black",
+#   "mypy",
+# ]
+# docs = [
+#   "sphinx",
+#   "sphinx-rtd-theme",
+# ]
+
+# Example of console scripts if your project provides command-line tools
+# [project.scripts]
+# your-command = "your_project_name.module:main_function"

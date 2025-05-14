@@ -80,6 +80,8 @@ biplot(res_postnatal_2, xlab = '')
 
 # Sabine -----------------------------------------------------------
 
+## exploratory analysis
+
 library(openxlsx)
 
 PFT_demographic = read_excel("/Users/sabinehung/sts195/PFT_demographics.xlsx")
@@ -163,5 +165,78 @@ ggplot(predictor_exposure) + aes(x = gest_avgNO2, y = gest_avgPM) + geom_point()
 plot(predictor_exposure[,1:12]) # gest_nanCount
 plot(predictor_exposure[,22:33]) # neonatal_nanCount
 plot(predictor_exposure[,47:52]) # infancy_count
+
+## cca
+
+# CODE
+# my age group: gestational
+
+# load data sets
+demographic = read_excel("/Users/sabinehung/sts195/PFT_demographics.xlsx")
+exposure = read_excel("/Users/sabinehung/sts195/predictor_exposure.xlsx")
+pedigree = read_excel("/Users/sabinehung/sts195/predictor_pedigree.xlsx")
+
+combined_df = left_join(demographic, exposure)
+
+# load packages
+library(vegan)
+library(colourvalues)
+
+# gestational
+
+y = as.matrix(combined_df[, c("Raw_mean", "Iti_mean", "Cti_mean")])
+X1_df = select(combined_df, starts_with("gest"), -contains("totalhours"), -contains("nanCount"), -contains("AUC"),
+               -contains("count"))
+X1 = as.matrix(X1_df)
+
+res_vegan <- CCorA(X1, y)
+X1_scores <- res_vegan$Cx
+Y1_scores <- res_vegan$Cy
+
+print(res_vegan)
+biplot(res_vegan)
+
+#' INTERPRETATION
+#'    For my age group of choosing, I went with "gestational" which we went over 
+#' a bit during one of our previous meetings. Just by looking at the top two 
+#' graphs, I immediately noticed how Obj67 (from the red chart) and Obj161 (from 
+#' the blue chart) stood out among the rest. To me, this indicates that the two 
+#' are vastly different from the other objects and have little to no correlation.
+#'    As for the second set of charts, I noticed that gest_avgO3 and gest_avgTemp
+#' were closely correlated with one another given how their arrows were near each
+#' other in the third quadrant. My educated guess is that since Iti_mean is directly
+#' between Raw_mean and Cti_mean, it has equal correlation between the two, not
+#' more or less with one or the other.
+
+# gestational (with BW_zscore, AgeAtScreen)
+
+X2_df = select(combined_df, BW_zscore, AgeAtScreen, starts_with("gestational"), -contains("totalhours"), -contains("nanCount"), -contains("AUC"),
+               -contains("count"))
+X2 = as.matrix(X2_df)
+
+res_vegan_2 <- CCorA(X2, y)
+X2_scores <- res_vegan$Cx
+Y1_scores <- res_vegan$Cy
+
+print(res_vegan_2)
+biplot(res_vegan_2)
+
+#' INTERPRETATION
+#'    For these second set of plots, the difference between these and the first
+#' set is that this now includes BW_zscore and AgeAtScreen. Immediately, I noticed
+#' Obj161 (a bit cut off but is my best guess), Obj161 (again possibly?), and
+#' Obj151 deviated greatly among the rest. Obj161 was particularly far from the
+#' other x values which tells me that this primate's Raw_mean, Iti_mean, and 
+#' Cti_mean were all vastly different from the other primates -- this brings 
+#' up a good question that could lead to some interesting findings with a 
+#' deeper look into things.
+#'    As for the bottom two plots, BW_zscore and AgeAtScreen in the second and
+#' third quadrants displayed a complete 90-degree angle, indicating that there 
+#' is no correlation between the two whatsoever. The Raw_mean and Iti_mean were
+#' fairly close to one another meaning there was correlation, and could tell us
+#' that as one increases so does the other -- so, tissue inertance increases
+#' as resistance of airways increases. Cti_mean and Raw_mean were nearly 
+#' 90-degrees apart from each other so they have essentially no correlation with
+#' each other.
 
 # Tiffany -----------------------------------------------------------

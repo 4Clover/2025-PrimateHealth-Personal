@@ -2,6 +2,7 @@
 static/*
 !static/**.svg
 .idea
+src/deprecated
 
 # DataLab Project Directory Structure
 data/

@@ -134,7 +134,6 @@ plt.show()
 
 
 #==================================================== BIPLOT ==========================================================#
-# *** LLM GENERATED DOCS AND PORTIONS OF CODE ***
 
 # (Shows data points projected onto the first two PCs, with arrows representing original variables)
 def biplot(score, coeff, labels=None, pc_x_idx=0, pc_y_idx=1):

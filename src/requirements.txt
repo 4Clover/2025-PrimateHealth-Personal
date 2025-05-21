@@ -1,0 +1,13 @@
+﻿pip~=25.1.1
+pyproject_hooks~=1.2.0
+build~=1.2.2.post1
+packaging~=25.0
+setuptools~=80.1.0
+pandas~=2.2.3
+numpy~=2.2.6
+scikit-learn~=1.6.1
+matplotlib~=3.10.3
+openpyxl~=3.1.5
+seaborn~=0.13.2
+semopy~=2.3.11
+graphviz~=0.20.3
